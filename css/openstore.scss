@@ -1,0 +1,190 @@
+@charset "utf-8";
+
+$color-black: #212121;
+$color-gray: #e9e9e9;
+$color-main: #ff7f3e;
+$color-base2: #fcf9ed;
+$color-white: #ffffff;
+$color-brown: #5d4a3a;
+$color-skyblue: #80c4e9;
+
+$breakpoints: (
+  "sm": "screen and (min-width: 430px)",
+  "md": "screen and (min-width: 768px)",
+  "lg": "screen and (min-width: 992px)",
+  "xl": "screen and (min-width: 1200px)",
+  ) !default;
+
+@mixin mx {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin media($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+@import url(./header.css);
+
+@import url(./footer.css);
+
+.card--flex {
+  @include media(md) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  &__content {
+    background-color: $color-white;
+    padding: 2.5rem;
+    border-radius: 1.25rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(50px
+    );
+  transition: opacity 0.1s ease, transform 0.1s ease;
+
+  @include media(md) {
+    width: 48%;
+  }
+
+  @include media(lg) {
+    width: 31%;
+  }
+}
+
+&__text {
+  font-family: "BIZ UDPGothic";
+}
+
+&__head {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+&__img {
+  width: 25%;
+  margin-bottom: 1.5rem;
+}
+}
+
+.attention {
+  @include media(md) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__head {
+    color: $color-main;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    width: 80%;
+    font-family: "BIZ UDPGothic";
+    width: 100%;
+
+    @include media(md) {
+      width: 80%;
+    }
+  }
+}
+
+.flow-card {
+  .special {
+    background-color: $color-main;
+    color: $color-white;
+  }
+
+  &:last-child &__img {
+    background-color: $color-main;
+    color: $color-white;
+    border-color: $color-main;
+  }
+
+
+
+  &::after {
+    content: "";
+    width: 2px;
+    height: 4rem;
+    background-color: #dbccb6;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &:last-child::after {
+    content: none;
+  }
+
+  &__contant {
+    background-color: $color-white;
+    padding: 3rem 2rem 2rem 2rem;
+    border-radius: 1.25rem;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media(md) {
+      width: 85%;
+      padding: 2.5rem 4rem;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    font-weight: 500;
+    line-height: 1;
+    left: 0rem;
+    top: -2rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: $color-white;
+    color: $color-main;
+    border: 2px solid $color-main;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+
+    span {
+      display: block;
+      font-size: 2rem;
+    }
+
+    @include media(md) {
+      left: -2rem;
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__head {
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+
+    @include media(md) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__caption {
+    font-family: "BIZ UDPGothic";
+  }
+}
